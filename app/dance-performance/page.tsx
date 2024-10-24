@@ -1,34 +1,56 @@
-// app/dance-performance/page.tsx
-import Head from 'next/head';
-import { dancePerformances } from '../dummyData';
-import Link from 'next/link';
+"use client";
 
-const DancePerformance: React.FC = () => {
-    return (
-        <>
-            <Head>
-                <title>Dance / Performance</title>
-                <meta name="description" content="Dance and performance works" />
-            </Head>
-            <h1>Dance / Performance</h1>
-            <Link href="/dance-performance/add">Add New Performance</Link>
-            <h2>Performance List</h2>
-            <ul>
-                {dancePerformances.map((performance) => (
-                    <li key={performance.id}>
-                        {performance.title} - {performance.content}
-                        <Link href={`/dance-performance/edit/${performance.id}`}> Edit</Link>
-                        <button onClick={() => handleDelete(performance.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
-        </>
-    );
+import React, { useEffect, useState } from "react";
+import { Card, CardContent, Typography, Grid, CircularProgress } from "@mui/material";
+
+type Blog = {
+    id: string;
+    title: string;
+    content: string;
 };
 
-// デリート機能の実装（後で詳しく）
-const handleDelete = (id: number) => {
-    // 実際の削除ロジックをここに実装
+const DancePerformance: React.FC = () => {
+    const [blogs, setBlogs] = useState<Blog[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            try {
+                const res = await fetch("https://dcirs4q6ul.microcms.io/api/v1/blogs", {
+                    headers: {
+                        "X-API-KEY": "xbpDGJRqFsRAYSUtYzTndxF4NNLEJ1l9UwG5",
+                    },
+                });
+                const data = await res.json();
+                setBlogs(data.contents);
+            } catch (error) {
+                console.error("Failed to fetch blogs:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBlogs();
+    }, []);
+
+    if (loading) {
+        return <CircularProgress />;
+    }
+
+    return (
+        <Grid container spacing={3}>
+            {blogs.map((blog) => (
+                <Grid item xs={12} sm={6} md={4} key={blog.id}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h5">{blog.title}</Typography>
+                            <Typography variant="body2">{blog.content.slice(0, 100)}...</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            ))}
+        </Grid>
+    );
 };
 
 export default DancePerformance;
