@@ -1,51 +1,187 @@
+// "use client";
+
+// import React from "react";
+// import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+// import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+// import LightbulbIcon from '@mui/icons-material/Lightbulb';
+// import CameraAltIcon from '@mui/icons-material/CameraAlt';
+// import { styled } from "@mui/system";
+// import Header from "./Header";
+// import { useRouter } from "next/navigation";
+
+// // アイコンとテキストをホバーしたときのスタイルを定義
+// const IconContainer = styled(Box)({
+//   display: "flex",
+//   flexDirection: "column",
+//   alignItems: "center",
+//   transition: "transform 0.3s, color 0.3s",
+//   cursor: "pointer",
+//   "&:hover": {
+//     transform: "scale(1.1)",
+//     color: "#ffcc00", // ホバー時の文字色
+//   },
+// });
+
+// // アイコンのローテーションスタイル
+// // const RotatingIcon = styled("span")({
+// //   display: "inline-block",
+// //   transition: "transform 0.5s",
+// //   "&:hover": {
+// //     transform: "rotate(360deg)",
+// //   },
+// // });
+
+// // ボタンのスタイルを定義
+// const StyledButton = styled(Button)({
+//   color: "#fff",
+//   transition: "background-color 0.3s, color 0.3s",
+//   "&:hover": {
+//     backgroundColor: "#444", // ホバー時の背景色
+//     color: "#ffcc00", // ホバー時の文字色
+//   },
+// });
+
+// const HomePage: React.FC = () => {
+//   const router = useRouter();
+//   const handleIconClick = (path: string) => {
+//     router.push(path);
+//   };
+
+//   return (
+//     <>
+//       <Box sx={{ backgroundColor: "#1c1c1c", minHeight: "100vh", padding: "2rem", color: "#fff" }}>
+//         <Header />
+
+//         {/* メインコンテンツ */}
+//         <Box
+//           sx={{
+//             padding: "2rem",
+//             display: "flex",
+//             flexDirection: "column",
+//             alignItems: "center",
+//             textAlign: "center",
+//             mt: "10rem" // 上側に間隔を空ける
+//           }}
+//         >
+//           <Typography variant="h4" gutterBottom>
+//             Welcome to My Portfolio
+//           </Typography>
+
+//           {/* アイコンとテキスト */}
+//           <Box sx={{ display: "flex", gap: "3rem", alignItems: "center", mt: "1rem" }}>
+//             <IconContainer onClick={() => handleIconClick('/dance-performance')}>
+//               <AccessibilityNewIcon sx={{ fontSize: "48px", color: "#fff" }} />
+//               <Typography variant="h6">Dance Performance</Typography>
+//             </IconContainer>
+//             <IconContainer onClick={() => handleIconClick('/lighting')}>
+//               <LightbulbIcon sx={{ fontSize: "48px", color: "#fff" }} />
+//               <Typography variant="h6">Lighting</Typography>
+//             </IconContainer>
+//             <IconContainer onClick={() => handleIconClick('/photography-video')}>
+//               <CameraAltIcon sx={{ fontSize: "48px", color: "#fff" }} />
+//               <Typography variant="h6">Photography Video</Typography>
+//             </IconContainer>
+//           </Box>
+//         </Box>
+//       </Box>
+//     </>
+//   );
+// };
+
+// export default HomePage;
+
 "use client";
 
 import React from "react";
-import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
-import { useRouter } from "next/router";
+import { AppBar, Toolbar, Typography, Button, Box, Grid } from "@mui/material";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import { styled } from "@mui/system";
+import Header from "./Header";
+import { useRouter } from "next/navigation";
 
-const Home: React.FC = () => {
+// アイコンとテキストをホバーしたときのスタイルを定義
+const IconContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  transition: "transform 0.3s, color 0.3s",
+  cursor: "pointer",
+  "&:hover": {
+    transform: "scale(1.1)",
+    color: "#ffcc00", // ホバー時の文字色
+  },
+});
+
+// ボタンのスタイルを定義
+const StyledButton = styled(Button)({
+  color: "#fff",
+  transition: "background-color 0.3s, color 0.3s",
+  "&:hover": {
+    backgroundColor: "#444", // ホバー時の背景色
+    color: "#ffcc00", // ホバー時の文字色
+  },
+});
+
+const HomePage: React.FC = () => {
   const router = useRouter();
 
-  const handleNavigation = (path: string) => {
+  const handleIconClick = (path: string) => {
     router.push(path);
   };
 
   return (
     <>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            My Portfolio
-          </Typography>
-          <Button color="inherit" onClick={() => handleNavigation("/dance-performance")}>
-            Dance Performance
-          </Button>
-          <Button color="inherit" onClick={() => handleNavigation("/lighting")}>
-            Lighting
-          </Button>
-          <Button color="inherit" onClick={() => handleNavigation("/photography-video")}>
-            Photography / Video
-          </Button>
-          <Button color="inherit" onClick={() => handleNavigation("/cv")}>
-            CV
-          </Button>
-          <Button color="inherit" onClick={() => handleNavigation("/contact")}>
-            Contact
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <Box sx={{ backgroundColor: "#1c1c1c", minHeight: "100vh", padding: "2rem", color: "#fff" }}>
+        <Header />
 
-      <Container>
-        <Typography variant="h2" align="center" gutterBottom>
-          Welcome to My Portfolio
-        </Typography>
-        <Typography variant="body1" align="center">
-          Explore my work in dance performance, lighting design, photography, and video. Feel free to view my CV or contact me for collaboration opportunities!
-        </Typography>
-      </Container>
+        {/* メインコンテンツ */}
+        <Box
+          sx={{
+            padding: "2rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+            mt: "8rem", // 上側に間隔を空ける
+          }}
+        >
+          <Typography variant="h4" gutterBottom>
+            Welcome to My Portfolio
+          </Typography>
+
+          {/* アイコンとテキスト */}
+          <Grid
+            container
+            spacing={3
+            }
+            sx={{ mt: "3rem" }}
+            justifyContent="center"
+          >
+            <Grid item xs={12} sm={4} display="flex" justifyContent="center">
+              <IconContainer onClick={() => handleIconClick("/dance-performance")}>
+                <AccessibilityNewIcon sx={{ fontSize: "48px", color: "#fff" }} />
+                <Typography variant="h6">Dance Performance</Typography>
+              </IconContainer>
+            </Grid>
+            <Grid item xs={12} sm={4} display="flex" justifyContent="center">
+              <IconContainer onClick={() => handleIconClick("/lighting")}>
+                <LightbulbIcon sx={{ fontSize: "48px", color: "#fff" }} />
+                <Typography variant="h6">Lighting</Typography>
+              </IconContainer>
+            </Grid>
+            <Grid item xs={12} sm={4} display="flex" justifyContent="center">
+              <IconContainer onClick={() => handleIconClick("/photography-video")}>
+                <CameraAltIcon sx={{ fontSize: "48px", color: "#fff" }} />
+                <Typography variant="h6">Photography Video</Typography>
+              </IconContainer>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
     </>
   );
 };
 
-export default Home;
+export default HomePage;

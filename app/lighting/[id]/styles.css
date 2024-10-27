@@ -1,0 +1,57 @@
+/* styles.css */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #fff;
+    /* タイトルを白色に */
+}
+
+p {
+    color: #ccc;
+    /* 段落のテキストを薄い色に */
+    line-height: 1.5;
+    /* 行間を調整 */
+}
+
+img {
+    max-width: 100%;
+    /* 画像が親要素を超えないように */
+    height: auto;
+    /* アスペクト比を保持 */
+}
+
+/* styles.css */
+
+h1 {
+    font-size: 2.5rem;
+    /* h1のフォントサイズ */
+}
+
+h2 {
+    font-size: 2rem;
+    /* h2のフォントサイズ */
+}
+
+h3 {
+    font-size: 1.75rem;
+    /* h3のフォントサイズ */
+}
+
+h4 {
+    font-size: 1.5rem;
+    /* h4のフォントサイズ */
+}
+
+h5 {
+    font-size: 1.25rem;
+    /* h5のフォントサイズ */
+}
+
+h6 {
+    font-size: 1rem;
+    /* h6のフォントサイズ */
+}
