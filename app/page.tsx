@@ -23,14 +23,14 @@ const IconContainer = styled(Box)({
 });
 
 // ボタンのスタイルを定義
-const StyledButton = styled(Button)({
-  color: "#fff",
-  transition: "background-color 0.3s, color 0.3s",
-  "&:hover": {
-    backgroundColor: "#444", // ホバー時の背景色
-    color: "#ffcc00", // ホバー時の文字色
-  },
-});
+// const StyledButton = styled(Button)({
+//   color: "#fff",
+//   transition: "background-color 0.3s, color 0.3s",
+//   "&:hover": {
+//     backgroundColor: "#444", // ホバー時の背景色
+//     color: "#ffcc00", // ホバー時の文字色
+//   },
+// });
 
 const HomePage: React.FC = () => {
   const router = useRouter();
