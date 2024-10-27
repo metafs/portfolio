@@ -50,7 +50,7 @@ const Header: React.FC = () => {
                             <List sx={{ width: 250 }}>
                                 {menuItems.map((item) => (
                                     <ListItem
-                                        button
+                                        component="button"
                                         key={item.label}
                                         onClick={() => {
                                             router.push(item.path);
