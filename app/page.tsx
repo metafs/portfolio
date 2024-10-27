@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Typography, Button, Box, Grid } from "@mui/material";
+import { Typography, Box, Grid } from "@mui/material";
 import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
